@@ -76,7 +76,7 @@ GROUP BY
 ORDER BY
     "Average Paid Time Off" DESC;
 
-##Interpretatin: Industries with higher average paid time off tend to vary in their revenue tiers, suggesting no consistent correlation between revenue generation and PTO generosity. This highlights differences in priorities, with some industries focusing more on employee benefits while others prioritize operational efficiency.
+##Interpretation: Industries with higher average paid time off tend to vary in their revenue tiers, suggesting no consistent correlation between revenue generation and PTO generosity. This highlights differences in priorities, with some industries focusing more on employee benefits while others prioritize operational efficiency.
 
 
 # Query: Industries Sorted by Revenue-to-PTO Ratio (Using HAVING clause)
