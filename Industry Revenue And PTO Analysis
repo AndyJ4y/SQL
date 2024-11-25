@@ -58,15 +58,15 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
-# Industry Revenue and Benefits Analysis Schema
+# Query: Industry Revenue and Benefits Analysis
 
 SELECT
     industry AS "Industry",
     COUNT(industry) AS "# of Companies",
     CASE 
-        WHEN AVG(revenue) < 200 THEN '< 200k Revenue'
-        WHEN AVG(revenue) BETWEEN 200 AND 400 THEN '200k-400k Revenue'
-        ELSE '400k+ Revenue'
+        WHEN AVG(revenue) < 200 THEN '< 200 million Revenue'
+        WHEN AVG(revenue) BETWEEN 200 AND 400 THEN '200-400 million Revenue'
+        ELSE '400+ million Revenue'
     END AS "Revenue Tier",
  ROUND(AVG(paid_time_off_days)) AS "Average Hours Paid Time Off"
 FROM
@@ -75,3 +75,24 @@ GROUP BY
     industry
 ORDER BY
     "Average Paid Time Off" DESC;
+
+##Interpretatin: Industries with higher average paid time off tend to vary in their revenue tiers, suggesting no consistent correlation between revenue generation and PTO generosity. This highlights differences in priorities, with some industries focusing more on employee benefits while others prioritize operational efficiency.
+
+
+# Query: Industries Sorted by Revenue-to-PTO Ratio (Using HAVING clause)
+
+SELECT
+    industry AS "Industry",
+    COUNT(*) AS "# of Companies",
+    ROUND(AVG(revenue), 2) AS "Average Revenue",
+    ROUND(AVG(paid_time_off_days), 2) AS "Average Paid Time Off",
+    ROUND(AVG(revenue) / AVG(paid_time_off_days), 2) AS "Revenue to PTO Ratio"
+FROM
+    fortune_companies
+GROUP BY
+    industry
+HAVING AVG(revenue) / AVG(paid_time_off_days) > 10 -- Ratio > 10
+ORDER BY
+    "Revenue to PTO Ratio" ASC;
+
+## Interpretation: Finance leads with the highest Revenue-to-PTO Ratio of 19.27, meaning it generates $19.27 million for each day of paid time off. Retail and Healthcare follow with lower ratios. 
