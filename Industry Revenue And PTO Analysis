@@ -1,4 +1,4 @@
-# Fortune 500 Schema SQL
+#This analysis utilized the following Fortune 500 dataset:
 
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
