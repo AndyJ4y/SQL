@@ -1,4 +1,5 @@
 # Project: Netflix Database Analysis
+### This project utilized data from the Netflix database stored at https://www.db-fiddle.com/f/pfsdrKi9cgCDp4Wwb77AF/0
 
 ## Schema SQL
 CREATE TABLE netflix_titles_info
